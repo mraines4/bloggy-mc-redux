@@ -1,17 +1,20 @@
 import { combineReducers, createStore } from 'redux';
 
 import posts from './reducers/posts';
+import selectedid from './reducers/selectedid';
 
 const frequency = 2000;
 const ls_key = 'bloggy-mc-redux'
 
 const rootReducer = combineReducers({
-    posts // same word, omit the colon
+    posts,
+    selectedid // same word, omit the colon
 })
 
 // check localstorage for any previously saved state
 // if there, pass in as second argument
 let initialState = JSON.parse(localStorage.getItem(ls_key)) || {} ;
+
 
 const store = createStore(
     rootReducer, initialState, 
