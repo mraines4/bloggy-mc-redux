@@ -1,4 +1,4 @@
-import { ACTION_CREATE_POST } from "../actions";
+import { ACTION_CREATE_POST, ACTION_DELETE_POST } from "../actions";
 import {generateId} from '../utils'; 
 
 // a reducer is a function that accepts the current state 
@@ -14,6 +14,12 @@ export default function posts(state={}, action={type: ''}) {
                 [id]: action.payload  // to use a variable as a key in an object literal, wrap the variable in squre brackets
             }
             return  newState
+        case ACTION_DELETE_POST:
+            const deleteState = {
+                ...state
+            }
+            delete deleteState[action.payload.id];
+            return deleteState
         default:
             return state
     }
